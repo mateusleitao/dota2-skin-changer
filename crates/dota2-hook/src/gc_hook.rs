@@ -13,7 +13,8 @@ use std::ffi::c_void;
 /// [2] RetrieveMessage
 const VTABLE_RETRIEVE_MESSAGE: usize = 2;
 
-type RetrieveMessageFn = unsafe extern "thiscall" fn(
+/// MSVC x64: `this` em RCX — mesmo que `extern "system"` com primeiro argumento.
+type RetrieveMessageFn = unsafe extern "system" fn(
     this: *mut c_void,
     msg_type: *mut u32,
     dest: *mut u8,
@@ -51,7 +52,7 @@ pub unsafe fn hook_game_coordinator(gc_interface: *mut c_void) -> Result<(), Str
 ///
 /// # Safety
 /// Called as a vtable replacement. Must maintain exact calling convention.
-unsafe extern "thiscall" fn hooked_retrieve_message(
+unsafe extern "system" fn hooked_retrieve_message(
     this: *mut c_void,
     msg_type: *mut u32,
     dest: *mut u8,

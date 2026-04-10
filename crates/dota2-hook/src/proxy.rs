@@ -2,8 +2,8 @@
 //! This module is Windows-only.
 
 use windows::core::PCSTR;
-use windows::Win32::Foundation::HMODULE;
-use windows::Win32::System::LibraryLoader::{FreeLibrary, GetProcAddress, LoadLibraryA};
+use windows::Win32::Foundation::{FreeLibrary, HMODULE};
+use windows::Win32::System::LibraryLoader::{GetProcAddress, LoadLibraryA};
 
 use std::ffi::c_void;
 use std::sync::atomic::{AtomicPtr, Ordering};
