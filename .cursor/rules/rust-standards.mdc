@@ -1,0 +1,17 @@
+---
+description: Rust coding standards for the Dota 2 Skin Changer project
+globs: ["**/*.rs"]
+alwaysApply: false
+---
+
+# Rust Standards
+
+- Use `thiserror` for all custom error types
+- Never use `unwrap()` or `expect()` in production code; use `?` operator or explicit error handling
+- Run `cargo clippy -- -D warnings` before committing
+- Run `cargo fmt` before committing
+- Use `#[cfg(test)]` modules for unit tests within each file
+- Use `#[cfg(target_os = "windows")]` for Windows-specific code with trait-based abstractions for cross-platform testing
+- Prefer `once_cell::sync::Lazy` or `std::sync::OnceLock` over `lazy_static`
+- All public functions must have doc comments
+- Error types must implement `Display` and `std::error::Error`

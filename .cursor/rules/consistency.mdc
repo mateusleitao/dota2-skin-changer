@@ -1,0 +1,13 @@
+---
+description: Naming and consistency conventions
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# Consistency
+
+- Commits follow Conventional Commits: feat/fix/docs/test/refactor/chore
+- Rust naming: snake_case for functions/variables, PascalCase for types
+- TypeScript naming: camelCase for functions/variables, PascalCase for components/types
+- File naming: snake_case for Rust, PascalCase for React components, camelCase for TS utilities
+- All errors must be typed — no string errors or anyhow in library crates

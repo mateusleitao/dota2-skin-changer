@@ -1,0 +1,3 @@
+[workspace]
+members = ["src-tauri", "crates/dota2-proto", "crates/vpk-parser", "crates/dota2-hook"]
+resolver = "2"

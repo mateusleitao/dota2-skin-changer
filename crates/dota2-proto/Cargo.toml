@@ -1,0 +1,11 @@
+[package]
+name = "dota2-proto"
+version = "0.1.0"
+edition = "2021"
+description = "Compiled Dota 2 Game Coordinator protobuf definitions"
+
+[dependencies]
+prost = "0.13"
+
+[build-dependencies]
+prost-build = "0.13"

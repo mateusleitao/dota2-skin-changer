@@ -1,0 +1,15 @@
+---
+description: Security constraints for the GC hook approach
+globs: ["crates/dota2-hook/**/*.rs"]
+alwaysApply: false
+---
+
+# Security Constraints — GC Hook
+
+- ONLY permitted technique: DLL proxy replacing steam_api64.dll + ISteamGameCoordinator vtable hook
+- PROHIBITED: direct memory scanning, ReadProcessMemory/WriteProcessMemory, code injection into running processes, kernel-mode drivers
+- The proxy DLL must forward ALL non-GC calls to the original DLL unchanged
+- GC message modification is limited to injecting CSOEconItem entries into SOCache responses
+- Never modify SendMessage (outgoing GC messages) — only RetrieveMessage (incoming)
+- Item IDs must use high ranges (> 2^40) to avoid conflicts with real items
+- The hook must be completely removable by restoring the original DLL

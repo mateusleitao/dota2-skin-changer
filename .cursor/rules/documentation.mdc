@@ -1,0 +1,12 @@
+---
+description: Documentation requirements
+globs: ["**/*.md", "**/*.rs", "**/*.ts"]
+alwaysApply: false
+---
+
+# Documentation
+
+- Any architectural change must update DECISIONS.md with a new numbered decision
+- Public Rust APIs must have doc comments
+- The mdBook documentation in docs/ must stay in sync with implementation
+- README.md must always contain current installation instructions and risk disclaimers

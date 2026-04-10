@@ -1,0 +1,52 @@
+# Rust
+/target/
+**/target/
+# prost-build output (never commit generated protobuf Rust)
+crates/dota2-proto/src/generated/
+**/*.rs.bk
+Cargo.lock
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+*.msi
+*.exe
+*.dmg
+*.AppImage
+*.deb
+
+# mdBook output
+docs/book/
+
+# Generated binaries
+item_db.bin
+
+# Backups created by the tool
+backups/
+
+# Cursor agent artifacts
+.cursor/plans/
+agent-transcripts/

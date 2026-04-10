@@ -1,0 +1,110 @@
+syntax = "proto2";
+
+import "steammessages.proto";
+
+enum ESOMsg {
+    k_ESOMsg_Create = 21;
+    k_ESOMsg_Update = 22;
+    k_ESOMsg_Destroy = 23;
+    k_ESOMsg_CacheSubscribed = 24;
+    k_ESOMsg_CacheUnsubscribed = 25;
+    k_ESOMsg_UpdateMultiple = 26;
+    k_ESOMsg_CacheSubscriptionCheck = 27;
+    k_ESOMsg_CacheSubscriptionRefresh = 28;
+}
+
+enum EGCPlatform {
+    k_eGCPlatform_None = 0;
+    k_eGCPlatform_PC = 1;
+    k_eGCPlatform_Mac = 2;
+    k_eGCPlatform_Linux = 3;
+    k_eGCPlatform_Android = 4;
+    k_eGCPlatform_iOS = 5;
+}
+
+message CMsgSOIDOwner {
+    optional uint32 type = 1;
+    optional uint64 id = 2;
+}
+
+message CMsgSOSingleObject {
+    optional int32 type_id = 2;
+    optional bytes object_data = 3;
+    optional fixed64 version = 4;
+    optional .CMsgSOIDOwner owner_soid = 5;
+    optional uint32 service_id = 6;
+}
+
+message CMsgSOMultipleObjects {
+    message SingleObject {
+        optional int32 type_id = 1;
+        optional bytes object_data = 2;
+    }
+
+    repeated .CMsgSOMultipleObjects.SingleObject objects_modified = 2;
+    optional fixed64 version = 3;
+    optional .CMsgSOIDOwner owner_soid = 6;
+    optional uint32 service_id = 7;
+}
+
+message CMsgSOCacheSubscribed {
+    message SubscribedType {
+        optional int32 type_id = 1;
+        repeated bytes object_data = 2;
+    }
+
+    repeated .CMsgSOCacheSubscribed.SubscribedType objects = 2;
+    optional fixed64 version = 3;
+    optional .CMsgSOIDOwner owner_soid = 4;
+    optional uint32 service_id = 5;
+    repeated uint32 service_list = 6;
+    optional fixed64 sync_version = 7;
+}
+
+message CMsgSOCacheUnsubscribed {
+    optional .CMsgSOIDOwner owner_soid = 2;
+}
+
+message CMsgSOCacheSubscriptionCheck {
+    optional fixed64 version = 2;
+    optional .CMsgSOIDOwner owner_soid = 3;
+    optional uint32 service_id = 4;
+    repeated uint32 service_list = 5;
+    optional fixed64 sync_version = 6;
+}
+
+message CMsgSOCacheSubscriptionRefresh {
+    optional .CMsgSOIDOwner owner_soid = 2;
+}
+
+message CExtraMsgBlock {
+    optional uint32 msg_type = 1;
+    optional bytes contents = 2;
+    optional uint64 msg_key = 3;
+    optional bool is_compressed = 4;
+}
+
+message CMsgGCClientWelcome {
+    optional uint32 version = 1;
+    optional bytes game_data = 2;
+    repeated .CMsgSOCacheSubscribed outofdate_subscribed_caches = 3;
+    repeated .CMsgSOCacheSubscribed uptodate_subscribed_caches = 4;
+    optional bytes location = 5;
+    optional bytes game_data2 = 6;
+    optional uint32 rtime32_gc_welcome_timestamp = 7;
+    optional uint32 currency = 8;
+    optional uint32 balance = 9;
+    optional string txn_country_code = 10;
+    repeated .CExtraMsgBlock additional_welcome_msgs = 16;
+}
+
+message CMsgGCClientHello {
+    optional uint32 version = 1;
+    repeated .CMsgSOCacheSubscriptionCheck socache_have_versions = 2;
+    optional uint32 client_session_need = 3;
+    optional uint32 client_launcher = 4;
+    optional uint32 partner_srcid = 5;
+    optional uint32 partner_accountid = 6;
+    optional uint32 partner_accountflags = 7;
+    optional uint32 partner_accountbalance = 8;
+}

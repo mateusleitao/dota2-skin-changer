@@ -1,0 +1,105 @@
+"items_game"
+{
+    "prefabs"
+    {
+        "wearable"
+        {
+            "item_slot"     "weapon"
+            "item_rarity"   "common"
+            "item_quality"  "4"
+        }
+        "default_item"
+        {
+            "item_rarity"   "common"
+            "item_quality"  "0"
+        }
+    }
+    "items"
+    {
+        "4000"
+        {
+            "name"          "Blade of Voth Domosh"
+            "prefab"        "wearable"
+            "item_rarity"   "immortal"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_legion_commander"    "1"
+            }
+        }
+        "4001"
+        {
+            "name"          "Arcana Blades"
+            "prefab"        "wearable"
+            "item_slot"     "weapon"
+            "item_rarity"   "arcana"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_phantom_assassin"    "1"
+            }
+        }
+        "4002"
+        {
+            "name"          "Frost Avalanche"
+            "prefab"        "wearable"
+            "item_slot"     "weapon"
+            "item_rarity"   "arcana"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_crystal_maiden"      "1"
+            }
+        }
+        "4003"
+        {
+            "name"          "Blades of Voth Domosh Offhand"
+            "prefab"        "wearable"
+            "item_slot"     "offhand_weapon"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_legion_commander"    "1"
+            }
+        }
+        "4004"
+        {
+            "name"          "Helm of the Dread Ascendance"
+            "prefab"        "wearable"
+            "item_slot"     "head"
+            "item_rarity"   "rare"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_legion_commander"    "1"
+            }
+        }
+        "4005"
+        {
+            "name"          "Cape of Frostbite"
+            "prefab"        "wearable"
+            "item_slot"     "back"
+            "item_rarity"   "mythical"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_crystal_maiden"      "1"
+            }
+        }
+        "4006"
+        {
+            "name"          "PA Head"
+            "prefab"        "wearable"
+            "item_slot"     "head"
+            "item_rarity"   "uncommon"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_phantom_assassin"    "1"
+            }
+        }
+        "default_weapon_lc"
+        {
+            "name"          "Default LC Weapon"
+            "prefab"        "default_item"
+            "item_slot"     "weapon"
+            "used_by_heroes"
+            {
+                "npc_dota_hero_legion_commander"    "1"
+            }
+        }
+    }
+}

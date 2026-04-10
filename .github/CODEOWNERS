@@ -1,0 +1,15 @@
+# Default owner for all files
+* @lange
+
+# Rust core
+/crates/ @lange
+/src-tauri/ @lange
+
+# Frontend
+/src/ @lange
+
+# CI/CD
+/.github/ @lange
+
+# Documentation
+/docs/ @lange

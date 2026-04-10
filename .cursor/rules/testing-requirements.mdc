@@ -1,0 +1,15 @@
+---
+description: Testing requirements for the project
+globs: ["**/*.rs", "**/*.ts", "**/*.tsx"]
+alwaysApply: false
+---
+
+# Testing Requirements
+
+- Every new Rust module must have associated tests
+- Tests use fixtures from `tests/fixtures/` — never depend on actual Dota 2 installation
+- Windows-specific code must have trait-based abstractions with mock implementations
+- Protobuf tests must verify round-trip serialization (serialize -> deserialize -> compare)
+- VPK parser tests must verify extraction against known fixture contents
+- Frontend tests use Vitest with React Testing Library
+- Integration tests go in `tests/` directory at workspace root

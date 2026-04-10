@@ -1,0 +1,27 @@
+[package]
+name = "dota2-hook"
+version = "0.1.0"
+edition = "2021"
+description = "Proxy DLL that hooks ISteamGameCoordinator to inject inventory items"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+dota2-proto = { path = "../dota2-proto" }
+prost = "0.13"
+once_cell = "1"
+bincode = "1"
+serde = { version = "1", features = ["derive"] }
+vpk-parser = { path = "../vpk-parser" }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Memory",
+    "Win32_System_SystemServices",
+] }
+
+[dev-dependencies]
+tempfile = "3"
