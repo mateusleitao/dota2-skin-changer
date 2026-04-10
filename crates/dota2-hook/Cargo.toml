@@ -11,7 +11,7 @@ crate-type = ["cdylib", "rlib"]
 dota2-proto = { path = "../dota2-proto" }
 prost = "0.14"
 once_cell = "1"
-bincode = "1"
+bincode = "3"
 serde = { version = "1", features = ["derive"] }
 vpk-parser = { path = "../vpk-parser" }
 

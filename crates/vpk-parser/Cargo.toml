@@ -6,7 +6,7 @@ description = "VPK v1 file parser and KeyValues/VDF parser for Dota 2 items_game
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
-bincode = "1"
+bincode = "3"
 thiserror = "2"
 
 [dev-dependencies]
