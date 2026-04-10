@@ -36,8 +36,9 @@ pub unsafe fn hook_game_coordinator(gc_interface: *mut c_void) -> Result<(), Str
     let vtable_ptr = *(gc_interface as *const *const *const c_void);
     let retrieve_msg_ptr = *vtable_ptr.add(VTABLE_RETRIEVE_MESSAGE);
 
-    ORIGINAL_RETRIEVE_MESSAGE =
-        Some(std::mem::transmute::<*const c_void, RetrieveMessageFn>(retrieve_msg_ptr));
+    ORIGINAL_RETRIEVE_MESSAGE = Some(std::mem::transmute::<*const c_void, RetrieveMessageFn>(
+        retrieve_msg_ptr,
+    ));
 
     // In a full implementation, we would modify the vtable here using
     // VirtualProtect to make it writable, then replace the pointer.

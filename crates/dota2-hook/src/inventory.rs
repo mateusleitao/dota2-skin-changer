@@ -1,6 +1,4 @@
-use dota2_proto::{
-    c_msg_so_cache_subscribed, CMsgSoCacheSubscribed, CsoEconItem,
-};
+use dota2_proto::{c_msg_so_cache_subscribed, CMsgSoCacheSubscribed, CsoEconItem};
 use prost::Message;
 use vpk_parser::item_database::ItemDatabase;
 
@@ -87,7 +85,10 @@ pub fn inject_items_into_cache(
 pub fn extract_account_id(cache_bytes: &[u8]) -> Option<u32> {
     let cache = CMsgSoCacheSubscribed::decode(cache_bytes).ok()?;
     #[allow(clippy::cast_possible_truncation)]
-    cache.owner_soid.as_ref().and_then(|soid| soid.id.map(|id| id as u32))
+    cache
+        .owner_soid
+        .as_ref()
+        .and_then(|soid| soid.id.map(|id| id as u32))
 }
 
 #[cfg(test)]

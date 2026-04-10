@@ -170,10 +170,7 @@ pub fn parse_items_game(input: &str) -> Result<Vec<ItemDefinition>, KeyValuesErr
                 Err(_) => continue,
             };
 
-            let name = value
-                .get_str("name")
-                .unwrap_or("unknown")
-                .to_string();
+            let name = value.get_str("name").unwrap_or("unknown").to_string();
 
             let prefab_name = value.get_str("prefab").unwrap_or("");
             let is_wearable = prefab_name.contains("wearable")
@@ -184,11 +181,9 @@ pub fn parse_items_game(input: &str) -> Result<Vec<ItemDefinition>, KeyValuesErr
                 continue;
             }
 
-            let item_slot = resolve_field(value, prefabs_section, "item_slot")
-                .unwrap_or_default();
+            let item_slot = resolve_field(value, prefabs_section, "item_slot").unwrap_or_default();
 
-            let hero_name = extract_hero_name(value, prefabs_section)
-                .unwrap_or_default();
+            let hero_name = extract_hero_name(value, prefabs_section).unwrap_or_default();
 
             let rarity = resolve_field(value, prefabs_section, "item_rarity")
                 .unwrap_or_else(|| "common".to_string());
@@ -212,11 +207,7 @@ pub fn parse_items_game(input: &str) -> Result<Vec<ItemDefinition>, KeyValuesErr
     Ok(items)
 }
 
-fn resolve_field(
-    item: &KvValue,
-    prefabs: Option<&KvValue>,
-    field: &str,
-) -> Option<String> {
+fn resolve_field(item: &KvValue, prefabs: Option<&KvValue>, field: &str) -> Option<String> {
     if let Some(val) = item.get_str(field) {
         return Some(val.to_string());
     }

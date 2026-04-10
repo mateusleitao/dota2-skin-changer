@@ -28,8 +28,7 @@ pub fn generate_item_db(vpk_path: &Path, output_path: &Path) -> Result<u32, Item
         items: items.clone(),
     };
 
-    let encoded =
-        bincode::serialize(&db).map_err(|e| ItemDbError::Serialization(e.to_string()))?;
+    let encoded = bincode::serialize(&db).map_err(|e| ItemDbError::Serialization(e.to_string()))?;
     fs::write(output_path, encoded)?;
 
     Ok(items.len() as u32)

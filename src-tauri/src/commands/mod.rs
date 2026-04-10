@@ -63,8 +63,7 @@ pub fn restore_backup(id: String) -> Result<(), String> {
 
     let _ = installer::uninstall(&path);
 
-    backup::restore_backup(&backup_dir, &id, &dest)
-        .map_err(|e| format!("Restore failed: {e}"))
+    backup::restore_backup(&backup_dir, &id, &dest).map_err(|e| format!("Restore failed: {e}"))
 }
 
 #[tauri::command]

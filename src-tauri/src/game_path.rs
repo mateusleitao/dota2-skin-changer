@@ -120,9 +120,7 @@ pub struct MockGamePathResolver {
 
 impl GamePathResolver for MockGamePathResolver {
     fn find_steam_path(&self) -> Result<PathBuf, GamePathError> {
-        self.steam_path
-            .clone()
-            .ok_or(GamePathError::SteamNotFound)
+        self.steam_path.clone().ok_or(GamePathError::SteamNotFound)
     }
 
     fn find_dota2_path(&self) -> Result<PathBuf, GamePathError> {

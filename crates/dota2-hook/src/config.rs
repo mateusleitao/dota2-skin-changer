@@ -15,9 +15,7 @@ pub fn load_item_database() -> Result<(), Box<dyn std::error::Error>> {
     let bytes = std::fs::read(&db_path)?;
     let db: ItemDatabase = bincode::deserialize(&bytes)?;
 
-    let mut lock = ITEM_DB
-        .write()
-        .map_err(|e| format!("Lock poisoned: {e}"))?;
+    let mut lock = ITEM_DB.write().map_err(|e| format!("Lock poisoned: {e}"))?;
     *lock = Some(db);
 
     Ok(())
@@ -25,10 +23,7 @@ pub fn load_item_database() -> Result<(), Box<dyn std::error::Error>> {
 
 /// Get a reference to the loaded item database
 pub fn get_item_database() -> Option<ItemDatabase> {
-    ITEM_DB
-        .read()
-        .ok()
-        .and_then(|lock| lock.clone())
+    ITEM_DB.read().ok().and_then(|lock| lock.clone())
 }
 
 /// Get the number of items in the loaded database

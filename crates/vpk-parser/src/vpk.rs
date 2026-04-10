@@ -179,9 +179,7 @@ pub fn extract_file(vpk_dir_path: &Path, target_path: &str) -> Result<Vec<u8>, V
             file.read_exact(&mut buf)?;
             data.extend(buf);
         } else {
-            let dir_str = vpk_dir_path
-                .to_str()
-                .ok_or(VpkError::InvalidTree)?;
+            let dir_str = vpk_dir_path.to_str().ok_or(VpkError::InvalidTree)?;
             let base = dir_str.trim_end_matches("_dir.vpk");
             let archive_path = format!("{base}_{:03}.vpk", entry.archive_index);
             let mut archive = fs::File::open(&archive_path)?;
@@ -212,7 +210,9 @@ mod tests {
 
     #[test]
     fn test_read_header_invalid_signature() {
-        let data: Vec<u8> = vec![0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
+        let data: Vec<u8> = vec![
+            0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+        ];
         let mut cursor = io::Cursor::new(data);
         let result = read_header(&mut cursor);
         assert!(result.is_err());
