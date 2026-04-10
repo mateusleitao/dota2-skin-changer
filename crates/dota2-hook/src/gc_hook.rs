@@ -52,6 +52,7 @@ pub unsafe fn hook_game_coordinator(gc_interface: *mut c_void) -> Result<(), Str
 ///
 /// # Safety
 /// Called as a vtable replacement. Must maintain exact calling convention.
+#[allow(dead_code)] // Referenciado quando o vtable for realmente substituído
 unsafe extern "system" fn hooked_retrieve_message(
     this: *mut c_void,
     msg_type: *mut u32,

@@ -17,7 +17,7 @@ pub fn load_original_dll() -> Result<(), Box<dyn std::error::Error>> {
     let name = PCSTR::from_raw(ORIGINAL_DLL_NAME.as_ptr());
     let handle = unsafe { LoadLibraryA(name) }?;
 
-    ORIGINAL_DLL.store(handle.0 as *mut c_void, Ordering::SeqCst);
+    ORIGINAL_DLL.store(handle.0, Ordering::SeqCst);
     Ok(())
 }
 
