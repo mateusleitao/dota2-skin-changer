@@ -8,4 +8,4 @@ description = "Compiled Dota 2 Game Coordinator protobuf definitions"
 prost = "0.13"
 
 [build-dependencies]
-prost-build = "0.13"
+prost-build = "0.14"
