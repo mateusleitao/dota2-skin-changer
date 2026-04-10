@@ -5,7 +5,7 @@ edition = "2021"
 description = "Compiled Dota 2 Game Coordinator protobuf definitions"
 
 [dependencies]
-prost = "0.13"
+prost = "0.14"
 
 [build-dependencies]
 prost-build = "0.14"
